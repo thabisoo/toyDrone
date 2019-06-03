@@ -11,7 +11,7 @@ function Game(x, y, unit){
     this.projectileCoordinates = {}
 
     this.place = function(_x, _y, face){
-
+        
         this.face = face;
         this.userX = _x;
         this.userY = _y;
@@ -25,6 +25,10 @@ function Game(x, y, unit){
             width: this.unit,
             height: this.unit
         }
+    }
+
+    this.getFaces = function(){
+        return this.faces;
     }
 
     this.move = function (width){

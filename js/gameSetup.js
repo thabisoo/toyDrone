@@ -24,6 +24,12 @@ function GameSetup(){
 
         this.toyDrone = new Game(this.stageWidth,this.stageWidth,this.singleUnit);
 
+        if(!this.toyDrone.getFaces().includes(face)){
+            alert("Invalid Face");
+            document.getElementById("faces").innerHTML = this.a();
+            return;
+        }
+           
         var a =this.toyDrone.place(x,y,face);
 
         this.ctx.clearRect(0,0, this.stageWidth, this.stageWidth);
@@ -79,6 +85,16 @@ function GameSetup(){
         document.getElementById("btnLeft").disabled = false;
         document.getElementById("btnRight").disabled = false;
         document.getElementById("btnAttack").disabled = false;
+    }
+
+    this.a = function(){
+        let a = "";
+
+        this.toyDrone.getFaces().forEach(element => {
+            a = a + element + ", ";
+        });
+        console.log(a);
+        return a;
     }
 }
 
