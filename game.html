@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Toy Drone Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 
+
+  <style>
+      body{
+          color: #ffffff;
+          font-size: 20px;
+      }
+  </style>
+
+</head>
+<body background="assets/surface.jpg">
+
+<div class="container" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-md-8">
+            <canvas id="myCanvas" width="550" height="550" style="border:3px solid #ffffff; border-radius: 10px;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+        </div>
+
+        <div class="col-md-4">
+
+          <h1>Toy Drone Game</h1>
+
+            <div class="form-group">
+                <label for="x">X:</label>
+                <input type="text" class="form-control" id="x" value="0">
+            </div>
+            <div class="form-group">
+                    <label for="y">Y:</label>
+                    <input type="text" class="form-control" id="y" value="0">
+            </div>
+            <div class="form-group">
+                    <label for="face">Face:</label>
+                    <input type="text" class="form-control" id="face" value="North">
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 50px;" onclick="place()">Place</button>
+                <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 20px;" id="btnMove" onclick="move()">Move</button>
+            </div>
+
+            <div class="form-group row">
+              <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 50px;" id="btnLeft" onclick="left()">Left</button>
+              <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 20px;" id="btnRight" onclick="right()">Right</button>
+          </div>
+
+          <div class="form-group row">
+            <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 50px;" id="btnReport" onclick="report()"> Report</button>
+            <button class="btn btn-lg btn-info col-sm-4" style="margin-left: 20px;" id="btnAttack" onclick="attack()">Attack</button>
+          </div>
+
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h3 class="card-title">Report Output</h3>
+                      <label id="output"></label>
+                    </div>
+                  </div>
+        </div>
+      </div>
+</div>
+<script src="js/game.js"></script>
+<script src="js/gameSetup.js"></script>
+</body>
+</html>
