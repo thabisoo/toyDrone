@@ -8,8 +8,6 @@ function Game(x, y, unit){
     this.userX = 0;
     this.userY = 0;
 
-    this.projectileCoordinates = {}
-
     this.place = function(_x, _y, face){
         
         this.face = face;
@@ -33,10 +31,10 @@ function Game(x, y, unit){
 
     this.move = function (width){
 
-        this.moveNorth(null);
-        this.moveEast(null, width);
-        this.moveSouth(null, width);
-        this.moveWest(null)
+        this.moveNorth();
+        this.moveEast(width);
+        this.moveSouth(width);
+        this.moveWest()
 
         return {
             x: this.x,
@@ -68,63 +66,31 @@ function Game(x, y, unit){
             this.face = this.faces[index - 1];
     }
 
-    this.attack = function(){
-        return this.projectileCoordinates;
-    }
-
-    this.moveNorth = function(face){
+    this.moveNorth = function(){
         if(this.face === "NORTH" && this.y > 1) {
             this.y = this.y - this.unit; 
             this.userY = this.userY + 1;
-
-           this.projectileCoordinates = { 
-               a: this.y + (this.unit / 2),
-               b: this.y + (this.unit / 2), 
-               c: this.y + this.unit, 
-               d: this.y + (this.unit * 2)
-            };
         }
     }
 
-    this.moveEast = function(face, width){
+    this.moveEast = function(width){
         if(this.face === "EAST" && this.x <= (width - this.unit - 1)){ 
             this.x = this.x + this.unit; 
             this.userX = this.userX - 1;
-
-            this.projectileCoordinates = { 
-                a: this.x + (this.unit / 2),
-                b: this.x + (this.unit / 2), 
-                c: this.x + this.unit, 
-                d: this.x + (this.unit * 2)
-             };
         }
     }
 
-    this.moveSouth = function(face, width){
+    this.moveSouth = function(width){
         if(this.face === "SOUTH" && this.y <= (width - this.unit - 1)){
             this.y = this.y + this.unit; 
             this.userY = this.userY - 1;
-
-            this.projectileCoordinates = { 
-                a: this.y - (this.unit / 2),
-                b: this.y - (this.unit / 2), 
-                c: this.y - this.unit, 
-                d: this.y - (this.unit * 2)
-             };
         }
     }
 
-    this.moveWest = function(face){
+    this.moveWest = function(){
         if(this.face === "WEST" && this.x > 1){
             this.x = this.x - this.unit; 
             this.userX = this.userX + 1;
-
-            this.projectileCoordinates = { 
-                a: 50,
-                b: 50, 
-                c: 100, 
-                d: 200
-             };
         }
     }
 }

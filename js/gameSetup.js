@@ -30,28 +30,18 @@ function GameSetup(){
             return;
         }
            
-        var a =this.toyDrone.place(x,y,face);
+        var coordinates = this.toyDrone.place(x,y,face);
 
         this.ctx.clearRect(0,0, this.stageWidth, this.stageWidth);
-        this.draw(a.x, a.y, a.width, a.height);
+        this.draw(coordinates.x, coordinates.y, coordinates.width, coordinates.height);
     }
 
     this.moveDrone = function(){
-        var a = this.toyDrone.move(this.stageWidth);
+        var coordinates = this.toyDrone.move(this.stageWidth);
 
         this.ctx.clearRect(0,0, this.stageWidth, this.stageWidth);
-        this.draw(a.x, a.y, a.width, a.height);
+        this.draw(coordinates.x, coordinates.y, coordinates.width, coordinates.height);
 
-    }
-
-    this.attack = function(){
-        var a = this.toyDrone.attack();
-        this.ctx.beginPath();
-        this.ctx.moveTo(a.a, a.c);
-        this.ctx.lineTo(a.b, a.d);
-        this.ctx.strokeStyle = "red";
-        this.ctx.lineWidth = 5;
-        this.ctx.stroke();
     }
 
     this.draw = function(x,y,width,height) {
@@ -87,14 +77,13 @@ function GameSetup(){
         document.getElementById("btnAttack").disabled = false;
     }
 
-    this.a = function(){
-        let a = "";
+    this.stringFaces = function(){
+        let faces = "";
 
-        this.toyDrone.getFaces().forEach(element => {
-            a = a + element + ", ";
+        this.toyDrone.getFaces().forEach(face => {
+            faces = faces + face + ", ";
         });
-        console.log(a);
-        return a;
+        return faces;
     }
 }
 
@@ -122,6 +111,3 @@ function report(){
     gameSetup.reportMovement();
 }
 
-function attack(){
-    gameSetup.attack();
-}
